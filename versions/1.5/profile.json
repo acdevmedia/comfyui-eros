@@ -1,0 +1,69 @@
+{
+  "version": "1.5",
+  "comfyui_version": "v0.43.0",
+  "comfyui_commit": "426f5eea52a7ece1dd599fff4cb6cd1f352ddd24",
+  "sageattention_version": "1.0.6",
+  "models": [
+    {
+      "repo": "LokkenJP/10EROS_1.5_fp8_exp_learned",
+      "revision": "4ea75d4e0d388a1bcee821bc18d6e319bcff969c",
+      "file": "10Eros_v1.5_fp8mixed_experimental_learned.safetensors",
+      "directory": "checkpoints",
+      "variant": "fp8",
+      "size": 30235567135,
+      "sha256": "192c8f544fe1694bd974e30217ca0f006be9d629b502313921989ee101bfe483"
+    },
+    {
+      "repo": "TenStrip/LTX2.3-10Eros",
+      "revision": "84a05a13610d78dbe4340d1be23fd8185e10f697",
+      "file": "10Eros_v1.5_bf16.safetensors",
+      "directory": "checkpoints",
+      "variant": "bf16",
+      "size": 46139886366,
+      "sha256": "2383d87bc1eea4fc00b73a52eb177bea868c2c46da621511acf9e54b92309f24"
+    },
+    {
+      "repo": "TenStrip/LTX2.3_DMD_Lora",
+      "revision": "77203c27a1d4022dab97d4f5a2280656b228fc2a",
+      "file": "LTX2.3_DMD_hybrid_v2.safetensors",
+      "directory": "loras",
+      "variant": "all",
+      "size": 5095398920,
+      "sha256": "db418249c95eba25ed7d7d24f74a17e7cdc82c03b0ef34a477abdccb1d7a2915"
+    },
+    {
+      "repo": "Lightricks/LTX-2.3",
+      "revision": "c1521179de480464f366a98a9d9b2acc4cc097b9",
+      "file": "ltx-2.3-spatial-upscaler-x2-1.1.safetensors",
+      "directory": "latent_upscale_models",
+      "variant": "all",
+      "size": 995743560,
+      "sha256": "5f416311fa8172b65af67530758964708d29a317b830d689a51143b7f91913ed"
+    },
+    {
+      "repo": "Comfy-Org/ltx-2",
+      "revision": "ccde4ba417d7900669fd56dd292a883cee11ff37",
+      "file": "split_files/text_encoders/gemma_3_12B_it_fp4_mixed.safetensors",
+      "directory": "text_encoders",
+      "variant": "all",
+      "size": 9447702218,
+      "sha256": "aaca463d11e6d8d2a4bdb0d6299214c15ef78a3f73e0ef8113d5a9d0219b3f6d"
+    }
+  ],
+  "base_image": "runpod/comfyui:1.4.1-comfyuiv0.35.0-cuda12.8@sha256:d411ebacf3fdbc98ded7f78f06ac12aae20c08041cde79ab08173c156d04aae5",
+  "python_version": "3.12",
+  "torch_version": "2.11.0+cu130",
+  "cuda_version": "13.0",
+  "frontend_version": "1.57.4",
+  "kjnodes_commit": "92783f23cf9df6a57ca4c5e035b4714ac0e2bcb4",
+  "workflow_revision": "a1e6abf69e232d30c5b62e70cb7ba1d465c30fc1",
+  "model_name": "10Eros v1.5",
+  "default_checkpoint": "10Eros_v1.5_bf16.safetensors",
+  "torchvision_version": "0.26.0+cu130",
+  "torchaudio_version": "2.11.0+cu130",
+  "huggingface_hub_version": "2.3.0",
+  "transformers_version": "5.21.0",
+  "diffusers_version": "0.42.0",
+  "ltxvideo_commit": "220e1d45aa0469f518e982102fca4dca92a61862",
+  "default_variant": "bf16"
+}
