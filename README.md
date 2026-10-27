@@ -9,7 +9,7 @@ Repository: [acdevmedia/comfyui-eros](https://github.com/acdevmedia/comfyui-eros
 1. Build and publish the image through this repository’s GitHub Actions workflow. Source changes alone do not publish an image.
 2. Add a Hugging Face read token to Runpod Secrets as `HUGGINGFACE_TOKEN`. Accept any model terms using that account.
 3. Review the template with `python3 scripts/create-runpod-template.py --dry-run`, then run it without `--dry-run` to create or update the Eros template. It reads `RUNPOD_API_KEY` from the environment or local `.env`.
-4. Deploy the Eros template on an NVIDIA A100 80 GB or another GPU with sufficient VRAM and a CUDA 13.0-compatible host driver. Keep the 200 GB container disk.
+4. Deploy the Eros template on an NVIDIA A100 80 GB or another GPU with sufficient VRAM and a CUDA 12.8-compatible host driver. Keep the 200 GB container disk.
 5. Wait for model verification and **ComfyUI is READY on port 8188**, then open **Connect → HTTP 8188**.
 
 The template uses temporary container storage. Download your videos and edited workflows before stopping, replacing, or deleting the pod. Outputs live in `/workspace/runpod-slim/ComfyUI/output`.
@@ -49,7 +49,7 @@ Changing precision does not overwrite saved workflows. The installer names fresh
 
 The bundle upgrades ComfyUI to **v0.43.0**, with its release-pinned frontend **1.57.4**, Transformers **5.21.0**, Diffusers **0.42.0**, Hugging Face Hub **2.3.0**, and SageAttention **1.0.6**. KJNodes and ComfyUI-LTXVideo are pinned at their current upstream heads. The official Runpod base **1.4.1** remains the latest upstream release.
 
-PyTorch/torchvision/torchaudio are upgraded together to **2.11.0 / 0.26.0 / 2.11.0**, using **CUDA 13.0** wheels. Newer standalone PyTorch releases exist, but do not have a matching released torchaudio family; this bundle keeps the matched family. Python 3.12 remains the interpreter supplied by the official base. The CUDA wheel runtime requires a compatible NVIDIA host driver; changing Python packages does not upgrade the host driver.
+PyTorch/torchvision/torchaudio are upgraded together to **2.11.0 / 0.26.0 / 2.11.0**, using **CUDA 12.8** wheels. Newer standalone PyTorch releases exist, but do not have a matching released torchaudio family; this bundle keeps the matched family. Python 3.12 remains the interpreter supplied by the official base. The CUDA wheel runtime requires a compatible NVIDIA host driver; changing Python packages does not upgrade the host driver.
 
 `versions/1.5/runtime-constraints.txt` pins the coordinated dependencies. The image records its complete installed package list in `/opt/eros-python-lock.txt`. Packages are installed at build time, with no updates at boot.
 

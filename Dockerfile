@@ -5,10 +5,10 @@ ENV EROS_VERSION=1.5 EROS_MODEL_VARIANT=bf16 \
     HF_HOME=/workspace/.cache/huggingface HF_HUB_DISABLE_TELEMETRY=1 \
     COMFYUI_ATTENTION=sage PYTHONUNBUFFERED=1
 # Upgrade the matched torch/vision/audio family together. The CUDA wheel supplies
-# its userspace runtime; the host must provide a CUDA 13.0-compatible NVIDIA driver.
+# its userspace runtime; the host must provide a CUDA 12.8-compatible NVIDIA driver.
 COPY versions/1.5/runtime-constraints.txt /opt/comfyui-runtime-constraints.txt
-RUN python3 -m pip install --no-cache-dir --upgrade --index-url https://download.pytorch.org/whl/cu130 \
-    'torch==2.11.0+cu130' 'torchvision==0.26.0+cu130' 'torchaudio==2.11.0+cu130'
+RUN python3 -m pip install --no-cache-dir --upgrade --index-url https://download.pytorch.org/whl/cu128 \
+    'torch==2.11.0+cu128' 'torchvision==0.26.0+cu128' 'torchaudio==2.11.0+cu128'
 
 RUN curl -fsSL https://github.com/Comfy-Org/ComfyUI/archive/426f5eea52a7ece1dd599fff4cb6cd1f352ddd24.tar.gz -o /tmp/comfy.tar.gz && \
     rm -rf /opt/comfyui-baked && mkdir /opt/comfyui-baked && \

@@ -10,8 +10,10 @@ Passed locally:
 - The Runpod template dry run selects `ghcr.io/acdevmedia/eros-comfyui:1.5`, BF16 and Eros environment names.
 - Current model, adapter, ComfyUI release, custom node heads, package releases and Actions release pins were checked against their upstream metadata.
 
-The runtime uses ComfyUI v0.43.0 and its supported frontend 1.57.4. The torch/vision/audio family is 2.11.0/0.26.0/2.11.0 with CUDA 13.0: newer standalone torch releases do not have a matching released torchaudio family. The official Runpod base and its Python 3.12 interpreter are retained. This is a coordinated compatible target, not a claim that every component has the numerically highest available version.
+The runtime uses ComfyUI v0.43.0 and its supported frontend 1.57.4. The torch/vision/audio family is 2.11.0/0.26.0/2.11.0 with CUDA 12.8: newer standalone torch releases do not have a matching released torchaudio family. The official Runpod base and its Python 3.12 interpreter are retained. This is a coordinated compatible target, not a claim that every component has the numerically highest available version.
 
 Pending: GitHub Actions image build, dependency installation/`pip check`, CPU ComfyUI smoke checks against the upgraded runtime, and Runpod GPU inference. No local Docker build was performed. No model weights were downloaded during local verification.
 
 The GPU check must cover both precision loaders, hybrid LoRA key mapping, SageAttention with the upgraded torch/CUDA stack, the six adapted workflows, final dimensions/duration and audio. Prior Sulphur performance measurements do not validate Eros. No Eros speed, VRAM, quality or audio synchronization claims are made before that run.
+
+First Actions build succeeded for commit `5def81f`, including dependency checks and CPU boot validation of all six workflows. A100 allocation with CUDA 13.0 failed in both Runpod pools; the runtime was changed to CUDA 12.8 wheels of the same torch/vision/audio versions for host compatibility. The rebuilt image requires fresh validation.
