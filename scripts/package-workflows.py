@@ -4,6 +4,7 @@ import copy
 import json
 from pathlib import Path
 from workflow_panels import fold_into_panel
+from workflow_style import style_workflow
 ROOT=Path(__file__).resolve().parents[1];P=ROOT/'versions/1.5'
 SCHEMA=json.loads((P/'node-schemas.json').read_text())
 PRIMITIVES={'INT','FLOAT','STRING','BOOLEAN','COMBO'}
@@ -92,7 +93,7 @@ def package(path):
         else:n.update(pos=[550,0],size=[500,680],color='#24364b',bgcolor='#172331')
     d['groups']=[]
     output_name={'Eros_I2V_DISTILLED.json':'01_Eros_Image_to_Video_Distilled.json','Eros_T2V_DISTILLED.json':'02_Eros_Text_to_Video_Distilled.json','Eros_I2V_BASE.json':'03_Eros_Image_to_Video_Base.json','Eros_T2V_BASE.json':'04_Eros_Text_to_Video_Base.json'}[path.name]
-    (P/'workflows'/output_name).write_text(json.dumps(d,indent=2)+'\n')
+    (P/'workflows'/output_name).write_text(json.dumps(style_workflow(d,title),indent=2)+'\n')
 
 def package_extra(path,entry):
     api=json.loads(path.read_text());d=to_ui(api,entry['title']);nodes={n['id']:n for n in d['nodes']}
@@ -112,7 +113,7 @@ def package_extra(path,entry):
             n['pos']=[1110,0];n['size']=[580,540];n['title']='Finished result — preview and download'
         else:n.update(pos=[550,0],size=[500,640],color='#24364b',bgcolor='#172331')
     d['groups']=[]
-    (P/'workflows'/entry['file']).write_text(json.dumps(d,indent=2)+'\n')
+    (P/'workflows'/entry['file']).write_text(json.dumps(style_workflow(d,entry['title']),indent=2)+'\n')
 
 if __name__=='__main__':
     for path in sorted((P/'api').glob('*.json')):package(path)

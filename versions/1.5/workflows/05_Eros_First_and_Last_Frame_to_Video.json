@@ -1,6 +1,6 @@
 {
   "id": "First and Last Frame to Video",
-  "last_node_id": 9020,
+  "last_node_id": 9021,
   "last_link_id": 72,
   "nodes": [
     {
@@ -8,11 +8,11 @@
       "type": "LoadImage",
       "pos": [
         0,
-        250
+        380
       ],
       "size": [
-        390,
-        250
+        480,
+        260
       ],
       "flags": {},
       "order": 0,
@@ -49,18 +49,21 @@
       ],
       "widgets_values_named": {
         "image": ""
-      }
+      },
+      "title": "First frame",
+      "color": "#334c63",
+      "bgcolor": "#1b2b3b"
     },
     {
       "id": 129,
       "type": "SaveVideo",
       "pos": [
-        1110,
-        0
+        1120,
+        100
       ],
       "size": [
         580,
-        540
+        860
       ],
       "flags": {},
       "order": 27,
@@ -126,18 +129,20 @@
         "format.codec": "auto",
         "codec": "auto"
       },
-      "title": "Finished result \u2014 preview and download"
+      "title": "03 \u00b7 Your video",
+      "color": "#3c5540",
+      "bgcolor": "#223025"
     },
     {
       "id": 130,
       "type": "LoadImage",
       "pos": [
         0,
-        550
+        700
       ],
       "size": [
-        390,
-        250
+        480,
+        260
       ],
       "flags": {},
       "order": 28,
@@ -174,18 +179,21 @@
       ],
       "widgets_values_named": {
         "image": ""
-      }
+      },
+      "title": "Last frame",
+      "color": "#334c63",
+      "bgcolor": "#1b2b3b"
     },
     {
       "id": 9004,
       "type": "PrimitiveStringMultiline",
       "pos": [
         0,
-        0
+        100
       ],
       "size": [
-        500,
-        200
+        480,
+        220
       ],
       "flags": {},
       "order": 33,
@@ -218,18 +226,20 @@
       "widgets_values_named": {
         "value": "A cinematic shot with natural movement and ambient sound."
       },
-      "title": "Prompt \u2014 describe the result"
+      "title": "01 \u00b7 Describe your shot",
+      "color": "#28524d",
+      "bgcolor": "#172f2c"
     },
     {
       "id": 9020,
       "type": "d1034822-4d5d-5352-a3dc-3ce239613ae1",
       "pos": [
-        550,
-        0
+        540,
+        100
       ],
       "size": [
-        500,
-        640
+        520,
+        860
       ],
       "flags": {},
       "order": 0,
@@ -338,7 +348,7 @@
           ]
         }
       ],
-      "title": "Shot settings \u2014 First and Last Frame to Video",
+      "title": "02 \u00b7 Shot settings",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.39.0"
@@ -361,8 +371,32 @@
         "cfg": 1.0,
         "seed": 42
       },
-      "color": "#24364b",
-      "bgcolor": "#172331"
+      "color": "#484661",
+      "bgcolor": "#29283d"
+    },
+    {
+      "id": 9021,
+      "type": "MarkdownNote",
+      "pos": [
+        0,
+        -60
+      ],
+      "size": [
+        1700,
+        100
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "10Eros 1.5 \u00b7 First and Last Frame to Video",
+      "properties": {},
+      "widgets_values": [
+        "**Make a shot.** Describe the scene, add your inputs, adjust Shot settings, then click **Run**.\n\nDefault: 960 \u00d7 544 \u00b7 24 fps \u00b7 241 frames (about 10 seconds)."
+      ],
+      "color": "#23413c",
+      "bgcolor": "#142723"
     }
   ],
   "links": [
@@ -401,15 +435,7 @@
   ],
   "groups": [],
   "config": {},
-  "extra": {
-    "ds": {
-      "scale": 0.75,
-      "offset": [
-        20,
-        70
-      ]
-    }
-  },
+  "extra": {},
   "version": 0.4,
   "definitions": {
     "subgraphs": [

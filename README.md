@@ -25,7 +25,7 @@ The Workflows sidebar receives six files prefixed `v1.5_bf16_` (or `v1.5_fp8_`) 
 - **05 First and Last Frame to Video:** two images and a prompt, with hybrid sampling.
 - **06 Image and Audio to Video:** an image, soundtrack and prompt, with hybrid sampling.
 
-Upload your inputs, describe the shot, adjust **Shot settings**, then click **Run**. Defaults remain 960 × 544, 24 fps and 241 frames, approximately ten seconds. Frame counts must be `8n + 1`. Longer clips require more memory and time.
+Each workflow has a short guide, numbered prompt/settings/result panels, consistent spacing and muted panel colors. Its initial view fits the actual browser window. Upload your inputs, describe the shot, adjust **Shot settings**, then click **Run**. Defaults remain 960 × 544, 24 fps and 241 frames, approximately ten seconds. Frame counts must be `8n + 1`. Longer clips require more memory and time.
 
 The accelerated workflows use hybrid-v2 at strength 1.0, CFG 1, Euler-family sampling, the author’s first-pass sigmas `1, .955, .893, .812, .715, .603, .482, .241, .121, 0`, and refinement sigmas `.92, .725, .421875, 0`. First-pass sigmas are exposed in Shot settings. The Base workflows retain their full scheduler and expose sampling steps instead. The former condition-safe adapter and LCM refinement are removed.
 
@@ -70,6 +70,6 @@ Startup logs: `/workspace/logs/eros-startup.log`. Downloads require ten GB of fr
 
 Local source checks cover graph links, pinned assets, checkpoint/adapter selection, budgets, version consistency, shell syntax and deterministic workflow packaging. Actions builds install dependencies, run `pip check`, start a CPU-only ComfyUI server and verify every workflow’s nodes and required inputs before publishing. No local Docker builds are used.
 
-The current upgrade has not yet been image-built or GPU-tested. CPU checks cannot establish inference quality, audio synchronization, peak VRAM or generation speed. No prior Sulphur performance result is claimed for this bundle. See [validation status](docs/VALIDATION.md).
+The CUDA 12.8 image has passed Actions build checks and A100 GPU generation tests for all six BF16 workflows, a 241-frame shot, and one FP8 shot. Generated MP4s were checked for 960 × 544 video and AAC audio. These are functional checks using a neutral sailboat fixture, not a general quality or audio-synchronization benchmark. See [validation status](docs/VALIDATION.md).
 
 [Source](https://github.com/acdevmedia/comfyui-eros) · [Builds](https://github.com/acdevmedia/comfyui-eros/actions) · [Model license](versions/1.5/LICENSE-model.txt)

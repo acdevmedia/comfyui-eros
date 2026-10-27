@@ -1,19 +1,19 @@
 # Validation status — 10Eros v1.5
 
-Passed locally:
+The CUDA 12.8 image for commit `901be83fd810811da1c70e2d5a5ca9f2ffc7c998` passed [GitHub Actions](https://github.com/acdevmedia/comfyui-eros/actions/runs/40450520146), dependency checks, and CPU ComfyUI validation for all six workflows. Published digest: `sha256:2c80b33cc63a6ec2c4db61cd96793a9fcfaf5f9deb699d3d959d36825800ac73`.
 
-- All six UI workflows and six API graphs select the v1.5 checkpoint and hybrid-v2 adapter.
-- Graph links, model revisions, SHA256 metadata and storage budgets validate.
-- Both precision variants install six correctly named workflows in an isolated installer test using tiny fixture weights. A second run performs no downloads, and installed workflow edits/files remain intact.
-- Workflow regeneration is deterministic.
-- Python compilation and shell syntax checks pass.
-- The Runpod template dry run selects `ghcr.io/acdevmedia/eros-comfyui:1.5`, BF16 and Eros environment names.
-- Current model, adapter, ComfyUI release, custom node heads, package releases and Actions release pins were checked against their upstream metadata.
+GPU checks passed on a Runpod NVIDIA A100-SXM4-80GB with driver 595.91.07, PyTorch 2.11.0+cu128 and SageAttention 1.0.6:
 
-The runtime uses ComfyUI v0.43.0 and its supported frontend 1.57.4. The torch/vision/audio family is 2.11.0/0.26.0/2.11.0 with CUDA 12.8: newer standalone torch releases do not have a matching released torchaudio family. The official Runpod base and its Python 3.12 interpreter are retained. This is a coordinated compatible target, not a claim that every component has the numerically highest available version.
+- The startup SageAttention kernel executed successfully, and generation used `--use-sage-attention`.
+- All six BF16 workflows generated 25-frame MP4s at 960 × 544 with H.264 video and AAC audio.
+- A BF16 image-to-video hybrid shot generated 241 frames at 24 fps, 10.041667 seconds, at 960 × 544 with AAC audio. The warmed fixture run took 26.15 seconds; this single sample does not establish general throughput.
+- The independent experimental FP8 v1.5 checkpoint passed SHA256 verification and a 25-frame text-to-video generation check.
+- No inference exceptions occurred in the completed matrix. Inputs were neutral synthetic sailboat images, a descriptive prompt, and a quiet tone for the supplied-audio workflow.
 
-Pending: GitHub Actions image build, dependency installation/`pip check`, CPU ComfyUI smoke checks against the upgraded runtime, and Runpod GPU inference. No local Docker build was performed. No model weights were downloaded during local verification.
+The later layout polish is checked against the flattened executable graph: titles, positions, sizes, colors, notes and initial camera behavior do not change execution. Pristine installed workflows were backed up before the polished versions were applied to the test pod. The pod was left running at the user's request.
 
-The GPU check must cover both precision loaders, hybrid LoRA key mapping, SageAttention with the upgraded torch/CUDA stack, the six adapted workflows, final dimensions/duration and audio. Prior Sulphur performance measurements do not validate Eros. No Eros speed, VRAM, quality or audio synchronization claims are made before that run.
+Local checks cover graph links, checkpoint/adapter selection, source revisions and SHA256 metadata, storage budgets, version consistency, deterministic packaging, shell syntax and Python compilation. A fixture installer test exercises both precision variants, restart reuse and workflow preservation without downloading weights locally.
 
-First Actions build succeeded for commit `5def81f`, including dependency checks and CPU boot validation of all six workflows. A100 allocation with CUDA 13.0 failed in both Runpod pools; the runtime was changed to CUDA 12.8 wheels of the same torch/vision/audio versions for host compatibility. The rebuilt image requires fresh validation.
+ComfyUI v0.43.0 uses its release-pinned frontend 1.57.4. The matched torch/vision/audio family is 2.11.0/0.26.0/2.11.0 with CUDA 12.8; newer standalone torch releases lack a matching released torchaudio family. Python 3.12 remains the official base interpreter. The first CUDA 13.0 build also passed CPU checks; the final CUDA 12.8 target was used for A100 deployment. Runpod's explicit CUDA scheduler filter prevented allocation; removing that filter produced a compatible host.
+
+No local Docker builds were performed. Image builds and publication run in Actions. Output media checks establish format, dimensions, frame count and an audio stream; perceptual quality, lip sync and audio synchronization remain for human evaluation. Prior Sulphur timings are not claimed for Eros.
