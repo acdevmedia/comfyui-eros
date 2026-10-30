@@ -1,5 +1,7 @@
 # 10Eros v1.5 for ComfyUI on Runpod
 
+[![Runpod](https://api.runpod.io/badge/acdevmedia/comfyui-eros)](https://console.runpod.io/hub/listing/acdevmedia/comfyui-eros)
+
 Generate video with audio from text, images, first/last frames, or an image and soundtrack. This bundle uses [TenStrip’s latest 10Eros v1.5](https://huggingface.co/TenStrip/LTX2.3-10Eros) and its recommended [DMD hybrid-v2 adapter](https://huggingface.co/TenStrip/LTX2.3_DMD_Lora).
 
 Repository: [acdevmedia/comfyui-eros](https://github.com/acdevmedia/comfyui-eros). Container: **`ghcr.io/acdevmedia/eros-comfyui:1.5`**. Every successful build also publishes an immutable `sha-<commit>` tag.
