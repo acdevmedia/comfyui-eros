@@ -75,3 +75,7 @@ Local source checks cover graph links, pinned assets, checkpoint/adapter selecti
 The CUDA 12.8 image has passed Actions build checks and A100 GPU generation tests for all six BF16 workflows, a 241-frame shot, and one FP8 shot. Generated MP4s were checked for 960 × 544 video and AAC audio. These are functional checks using a neutral sailboat fixture, not a general quality or audio-synchronization benchmark. See [validation status](docs/VALIDATION.md).
 
 [Source](https://github.com/acdevmedia/comfyui-eros) · [Builds](https://github.com/acdevmedia/comfyui-eros/actions) · [Model license](versions/1.5/LICENSE-model.txt)
+
+## Runpod environment reference
+
+See the [complete template environment reference](docs/runpod-environment.md) for every variable, its default, secret mapping, and Hub-specific differences. Defaults are synchronized from account template `qwyiuof0yk`.

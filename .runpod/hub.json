@@ -16,27 +16,13 @@
     ],
     "env": [
       {
-        "key": "PORT",
-        "value": "8000"
-      },
-      {
-        "key": "PORT_HEALTH",
-        "value": "8001"
-      },
-      {
-        "key": "HF_TOKEN",
-        "input": {
-          "name": "Hugging Face read token",
-          "type": "string",
-          "description": "Use a Runpod Secret. Accept the model terms before deploying; never commit a token.",
-          "required": true
-        }
-      },
-      {
         "key": "COMFYUI_ATTENTION",
         "input": {
-          "name": "Attention backend",
+          "name": "Comfyui Attention",
           "type": "string",
+          "description": "Attention backend used when the launch settings are first created. Existing user launch settings are preserved.",
+          "default": "sage",
+          "advanced": true,
           "options": [
             {
               "label": "SageAttention",
@@ -46,15 +32,17 @@
               "label": "PyTorch",
               "value": "pytorch"
             }
-          ],
-          "default": "sage"
+          ]
         }
       },
       {
         "key": "EROS_MODEL_VARIANT",
         "input": {
-          "name": "Model precision",
+          "name": "Eros Model Variant",
           "type": "string",
+          "description": "Checkpoint precision: bf16 (template default) or fp8. Selects model downloads and newly installed workflow checkpoint names.",
+          "default": "bf16",
+          "advanced": false,
           "options": [
             {
               "label": "BF16",
@@ -64,9 +52,34 @@
               "label": "FP8",
               "value": "fp8"
             }
-          ],
-          "default": "bf16"
+          ]
         }
+      },
+      {
+        "key": "EROS_VERSION",
+        "value": "1.5"
+      },
+      {
+        "key": "HF_HOME",
+        "input": {
+          "name": "Hf Home",
+          "type": "string",
+          "description": "Hugging Face cache directory on container storage.",
+          "default": "/workspace/.cache/huggingface",
+          "advanced": true
+        }
+      },
+      {
+        "key": "HF_TOKEN",
+        "value": "{{ RUNPOD_SECRET_HUGGINGFACE_TOKEN }}"
+      },
+      {
+        "key": "PORT",
+        "value": "8000"
+      },
+      {
+        "key": "PORT_HEALTH",
+        "value": "8001"
       }
     ]
   }

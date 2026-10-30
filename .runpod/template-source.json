@@ -1,0 +1,23 @@
+{
+  "templateId": "qwyiuof0yk",
+  "templateName": "10Eros LTX 2.3 ComfyUI Video One-Click",
+  "imageName": "ghcr.io/acdevmedia/eros-comfyui:1.5",
+  "containerDiskInGb": 200,
+  "volumeMountPath": "/workspace",
+  "ports": [
+    "8188/http"
+  ],
+  "env": {
+    "COMFYUI_ATTENTION": "sage",
+    "EROS_MODEL_VARIANT": "bf16",
+    "EROS_VERSION": "1.5",
+    "HF_HOME": "/workspace/.cache/huggingface",
+    "HF_TOKEN": "{{ RUNPOD_SECRET_HUGGINGFACE_TOKEN }}"
+  },
+  "isPublic": true,
+  "startJupyter": true,
+  "startSsh": true,
+  "dockerEntrypoint": null,
+  "dockerStartCmd": null,
+  "volumeInGb": null
+}
