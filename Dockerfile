@@ -19,6 +19,9 @@ RUN curl -fsSL https://github.com/Comfy-Org/ComfyUI/archive/426f5eea52a7ece1dd59
     mkdir -p /opt/comfyui-baked/custom_nodes/ComfyUI-LTXVideo && \
     curl -fsSL https://github.com/Lightricks/ComfyUI-LTXVideo/archive/220e1d45aa0469f518e982102fca4dca92a61862.tar.gz | \
     tar xz --strip-components=1 -C /opt/comfyui-baked/custom_nodes/ComfyUI-LTXVideo && \
+    mkdir -p /opt/comfyui-baked/custom_nodes/Sphere-Light-Render-ComfyUI && \
+    curl -fsSL https://github.com/eric-venti-seeds/Sphere-Light-Render-ComfyUI/archive/cc89da68f898ddabb6fddbfb0781d3999550ac18.tar.gz | \
+    tar xz --strip-components=1 -C /opt/comfyui-baked/custom_nodes/Sphere-Light-Render-ComfyUI && \
     python3 -m pip install --no-cache-dir -c /opt/comfyui-runtime-constraints.txt \
     -r /opt/comfyui-baked/requirements.txt \
     -r /opt/comfyui-baked/custom_nodes/ComfyUI-KJNodes/requirements.txt \
@@ -34,7 +37,7 @@ COPY scripts /opt/eros/scripts
 COPY versions /opt/eros/versions
 ARG VCS_REF=development
 RUN printf "EROS_BUNDLE=%s\n" "$VCS_REF" >> /opt/comfyui-baked/.runpod-bundle-version && \
-    sed -i 's/BAKED_NODES=(/BAKED_NODES=("ComfyUI-LTXVideo" /' /start.sh && \
+    sed -i 's/BAKED_NODES=(/BAKED_NODES=("ComfyUI-LTXVideo" "Sphere-Light-Render-ComfyUI" /' /start.sh && \
     chmod +x /opt/eros/scripts/*.sh && /opt/eros/scripts/validate.sh build && python3 /opt/eros/scripts/check-build-server.py && \
     bash /opt/eros/scripts/test-copyparty.sh
 EXPOSE 8188 3923

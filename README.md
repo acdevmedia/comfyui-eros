@@ -18,7 +18,7 @@ The template uses temporary container storage. Download your videos and edited w
 
 ## Workflows
 
-The Workflows sidebar receives six files prefixed `v1.5_bf16_` (or `v1.5_fp8_`) so older installed workflows are preserved:
+The Workflows sidebar receives ten files prefixed `v1.5_bf16_` (or `v1.5_fp8_`) so older installed workflows are preserved:
 
 - **01 Image to Video — Distilled:** an image and prompt, using the hybrid adapter on both passes.
 - **02 Text to Video — Distilled:** a prompt, using the hybrid adapter on both passes.
@@ -26,6 +26,12 @@ The Workflows sidebar receives six files prefixed `v1.5_bf16_` (or `v1.5_fp8_`) 
 - **04 Text to Video — Base:** full base sampling followed by hybrid refinement.
 - **05 First and Last Frame to Video:** two images and a prompt, with hybrid sampling.
 - **06 Image and Audio to Video:** an image, soundtrack and prompt, with hybrid sampling.
+- **07 New Camera Angle:** a clip re-shot from a new position.
+- **08 Recurring Characters:** a reference sheet that keeps people and places the same across shots.
+- **09 Relight:** an exterior clip with the sun moved.
+- **10 Day to Night:** a daylight clip turned into night.
+
+Workflows 07 to 10 are explained under [Coverage and continuity](#coverage-and-continuity).
 
 Each workflow has a short guide, numbered prompt/settings/result panels, consistent spacing and muted panel colors. Its initial view fits the actual browser window. Upload your inputs, describe the shot, adjust **Shot settings**, then click **Run**. Defaults remain 960 × 544, 24 fps and 241 frames, approximately ten seconds. Frame counts must be `8n + 1`. Longer clips require more memory and time.
 
@@ -43,7 +49,7 @@ Both variants also download:
 - `gemma_3_12B_it_fp4_mixed.safetensors`, approximately 9.45 GB.
 - `ltx-2.3-spatial-upscaler-x2-1.1.safetensors`, approximately 1.00 GB.
 
-Total downloads are approximately **61.7 GB for BF16**, or **45.8 GB for FP8**. Each file has a pinned source revision, exact byte size and SHA256 in `versions/1.5/profile.json`. Interrupted downloads resume; verified files are reused. No weights are baked into the image. There is no native-distilled model variant in this bundle.
+Total downloads are approximately **61.7 GB for BF16**, or **45.8 GB for FP8**, before the small [optional LoRAs](#optional-loras). Each file has a pinned source revision, exact byte size and SHA256 in `versions/1.5/profile.json`. Interrupted downloads resume; verified files are reused. No weights are baked into the image. There is no native-distilled model variant in this bundle.
 
 Changing precision does not overwrite saved workflows. The installer names fresh workflows by version and precision; open the newly installed files after changing `EROS_MODEL_VARIANT`. Old checkpoint files stay on disk until you remove them.
 
@@ -57,6 +63,27 @@ First and Last Frame has a **Transition LoRA strength** control, 0 by default, u
 
 These are pinned and downloaded at first boot, never baked into the image. At strength 0 ComfyUI skips a LoRA entirely, so it costs nothing while it is off.
 
+## Coverage and continuity
+
+Workflows 07 to 10 each use an IC-LoRA, a LoRA that only works through its own reference input, so each one is a separate workflow rather than a strength control. Each has a how-to note beside it. All four are new and have not been run on a GPU yet, and the LoRAs were trained on plain LTX 2.3, not on 10Eros, so check a short clip first.
+
+| Workflow | You provide | What it does | LoRA and licence |
+|---|---|---|---|
+| **07 New Camera Angle** | a clip | Re-shoots the same take from a new position, keeps its sound | [CrossView Prompt v0.9](https://huggingface.co/Cseti/LTX2.3-22B_IC-LoRA-CrossView-Prompt), Apache 2.0, downloaded at first boot |
+| **08 Recurring Characters** | a reference sheet | Keeps people, wardrobe, props and location the same across shots | [Ingredients](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Ingredients), gated |
+| **09 Relight** | an exterior clip and a light ball | Moves the sun without changing the shot, keeps its sound | [Relight](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Relight), gated |
+| **10 Day to Night** | a daylight clip | Turns a day shot into night, keeps its sound | [Day to Night](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Day-To-Night), gated |
+
+Every clip workflow renders one guided pass at the size in **Shot settings**, with no upscale. Relight must stay single-pass: the second stage drops the reference. **Width** and **Height** set the frame's area and your clip sets its shape. Your clip's sound is held during sampling and the original goes into the result, so the new shot lines up on the same audio track.
+
+**New Camera Angle** takes a fixed vocabulary of 63 moves and works best in small steps, so chain several for a big move. It reaches about 60° either side of the front. **Relight** is for sunlit exteriors, and it adds the Sphere Light Render node (MIT), pinned in the image. The ball is drawn by your browser when you click Run, so this workflow needs the ComfyUI page rather than an API call.
+
+**The three gated LoRAs are optional.** They use the LTX-2 Community License, which needs a separate commercial licence for companies with revenue of $10 million a year or more. Open each link above and accept the terms with the Hugging Face account behind `HF_TOKEN`. The pod then fetches them at boot, about 1.96 GB in all. Without a token or an accepted licence it logs which ones it skipped and starts normally; only those workflows are affected. To fetch them on a running pod, run `python3 /opt/eros/scripts/download-models.py` in its terminal.
+
+Each LoRA is pinned to a revision and size in `versions/1.5/profile.json`. Hugging Face hides the SHA256 of a gated file until its licence is accepted, so those three are checked by size until a maintainer accepts them and runs `python3 scripts/pin-gated-models.py`, which reads `HF_TOKEN` from the shell or the ignored `.env` and fills in the hashes.
+
+Regenerate these four from their source with `python3 scripts/prepare-iclora-apis.py`, then `python3 scripts/package-workflows.py`.
+
 ## Browse and download outputs
 
 **Connect → HTTP 3923 / Copyparty** opens a gallery of everything in `/workspace/runpod-slim/ComfyUI/output`, newest first. Sign in with the values of Runpod Secrets `COPYPARTY_USERNAME` and `COPYPARTY_SECRET`. Select files to download them, or a whole folder as a ZIP. It is read-only: nothing can be uploaded, changed or deleted, and if either secret is missing it stays off without affecting ComfyUI. The log is `/workspace/logs/copyparty.log`.
@@ -65,7 +92,7 @@ These are pinned and downloaded at first boot, never baked into the image. At st
 
 ## Runtime and settings
 
-The bundle upgrades ComfyUI to **v0.43.0**, with its release-pinned frontend **1.57.4**, Transformers **5.21.0**, Diffusers **0.42.0**, Hugging Face Hub **2.3.0**, and SageAttention **1.0.6**. KJNodes and ComfyUI-LTXVideo are pinned at their current upstream heads. The official Runpod base **1.4.1** remains the latest upstream release.
+The bundle upgrades ComfyUI to **v0.43.0**, with its release-pinned frontend **1.57.4**, Transformers **5.21.0**, Diffusers **0.42.0**, Hugging Face Hub **2.3.0**, and SageAttention **1.0.6**. KJNodes, ComfyUI-LTXVideo and Sphere Light Render are pinned at their current upstream heads. The official Runpod base **1.4.1** remains the latest upstream release.
 
 PyTorch/torchvision/torchaudio are upgraded together to **2.11.0 / 0.26.0 / 2.11.0**, using **CUDA 12.8** wheels. Newer standalone PyTorch releases exist, but do not have a matching released torchaudio family; this bundle keeps the matched family. Python 3.12 remains the interpreter supplied by the official base. The CUDA wheel runtime requires a compatible NVIDIA host driver; changing Python packages does not upgrade the host driver.
 
