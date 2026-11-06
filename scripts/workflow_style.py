@@ -23,7 +23,7 @@ def style_workflow(data, title, labels=None, guided=False):
     last = max(n['id'] for graph in [data] + data.get('definitions', {}).get('subgraphs', []) for n in graph.get('nodes', [])) + 1
     data['nodes'].append({'id':last, 'type':'MarkdownNote', 'pos':[0,-60], 'size':[1700,100], 'flags':{}, 'order':0, 'mode':0,
         'inputs':[], 'outputs':[], 'title':'10Eros 1.5 · '+title,
-        'properties':{}, 'widgets_values':['**Make a shot.** Follow the guide on the left, add your inputs, adjust Shot settings, then click **Run**.' if guided else '**Make a shot.** Describe the scene, add your inputs, adjust Shot settings, then click **Run**.\n\nDefault: 960 × 544 · 24 fps · 241 frames (about 10 seconds). With an image, Width and Height set the frame\'s area and the image sets its shape, so nothing is cropped: a head-to-toe portrait stays head to toe.'],
+        'properties':{}, 'widgets_values':['**Make a shot.** Follow the guide on the left, add your inputs, adjust Shot settings, then click **Run**.' if guided else '**Make a shot.** Describe the scene, add your inputs, adjust Shot settings, then click **Run**.\n\nDefault: 960 × 544 · 24 fps · 241 frames (about 10 seconds). With an image, Width and Height set the frame\'s area and the image sets its shape, so a head-to-toe portrait stays head to toe. Turn on Exact Frame in Shot settings to use your exact Width and Height instead, which centre-crops the image.'],
         'color':'#23413c', 'bgcolor':'#142723'})
     data['last_node_id'] = last
     # Let the frontend fit the whole graph to the actual window on first open.

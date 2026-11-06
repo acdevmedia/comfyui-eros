@@ -1,7 +1,7 @@
 {
   "id": "First and Last Frame to Video",
-  "last_node_id": 9110,
-  "last_link_id": 84,
+  "last_node_id": 9112,
+  "last_link_id": 87,
   "nodes": [
     {
       "id": 100,
@@ -32,7 +32,7 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            81
+            84
           ]
         },
         {
@@ -72,7 +72,7 @@
         {
           "name": "video",
           "type": "VIDEO",
-          "link": 83
+          "link": 86
         },
         {
           "name": "filename_prefix",
@@ -162,7 +162,7 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            80
+            83
           ]
         },
         {
@@ -213,7 +213,7 @@
           "name": "STRING",
           "type": "STRING",
           "links": [
-            82
+            85
           ]
         }
       ],
@@ -231,7 +231,7 @@
       "bgcolor": "#172f2c"
     },
     {
-      "id": 9109,
+      "id": 9111,
       "type": "d1034822-4d5d-5352-a3dc-3ce239613ae1",
       "pos": [
         540,
@@ -262,6 +262,16 @@
           "type": "INT",
           "widget": {
             "name": "height"
+          },
+          "link": null
+        },
+        {
+          "label": "Exact Frame",
+          "localized_name": "exact_frame",
+          "name": "exact_frame",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "exact_frame"
           },
           "link": null
         },
@@ -330,21 +340,21 @@
           "localized_name": "input",
           "name": "input",
           "type": "IMAGE",
-          "link": 80
+          "link": 83
         },
         {
           "label": "LoadImage",
           "localized_name": "input_2",
           "name": "input_2",
           "type": "IMAGE",
-          "link": 81
+          "link": 84
         },
         {
           "label": "Prompt \u2014 describe the result",
           "localized_name": "text",
           "name": "text",
           "type": "STRING",
-          "link": 82
+          "link": 85
         }
       ],
       "outputs": [
@@ -354,7 +364,7 @@
           "name": "VIDEO",
           "type": "VIDEO",
           "links": [
-            83
+            86
           ]
         }
       ],
@@ -366,6 +376,7 @@
       "widgets_values": [
         960,
         544,
+        false,
         241,
         24,
         "blurry, low quality, distorted motion, flickering",
@@ -376,6 +387,7 @@
       "widgets_values_named": {
         "width": 960,
         "height": 544,
+        "exact_frame": false,
         "frames_8n_1": 241,
         "fps": 24,
         "negative_prompt": "blurry, low quality, distorted motion, flickering",
@@ -387,7 +399,7 @@
       "bgcolor": "#29283d"
     },
     {
-      "id": 9110,
+      "id": 9112,
       "type": "MarkdownNote",
       "pos": [
         0,
@@ -405,7 +417,7 @@
       "title": "10Eros 1.5 \u00b7 First and Last Frame to Video",
       "properties": {},
       "widgets_values": [
-        "**Make a shot.** Describe the scene, add your inputs, adjust Shot settings, then click **Run**.\n\nDefault: 960 \u00d7 544 \u00b7 24 fps \u00b7 241 frames (about 10 seconds). With an image, Width and Height set the frame's area and the image sets its shape, so nothing is cropped: a head-to-toe portrait stays head to toe."
+        "**Make a shot.** Describe the scene, add your inputs, adjust Shot settings, then click **Run**.\n\nDefault: 960 \u00d7 544 \u00b7 24 fps \u00b7 241 frames (about 10 seconds). With an image, Width and Height set the frame's area and the image sets its shape, so a head-to-toe portrait stays head to toe. Turn on Exact Frame in Shot settings to use your exact Width and Height instead, which centre-crops the image."
       ],
       "color": "#23413c",
       "bgcolor": "#142723"
@@ -413,32 +425,32 @@
   ],
   "links": [
     [
-      80,
+      83,
       130,
       0,
-      9109,
-      8,
-      "IMAGE"
-    ],
-    [
-      81,
-      100,
-      0,
-      9109,
+      9111,
       9,
       "IMAGE"
     ],
     [
-      82,
+      84,
+      100,
+      0,
+      9111,
+      10,
+      "IMAGE"
+    ],
+    [
+      85,
       9004,
       0,
-      9109,
-      10,
+      9111,
+      11,
       "STRING"
     ],
     [
-      83,
-      9109,
+      86,
+      9111,
       0,
       129,
       0,
@@ -456,8 +468,8 @@
         "version": 1,
         "state": {
           "lastGroupId": 0,
-          "lastNodeId": 9109,
-          "lastLinkId": 84,
+          "lastNodeId": 9111,
+          "lastLinkId": 87,
           "lastRerouteId": 0
         },
         "revision": 0,
@@ -469,7 +481,7 @@
             -400,
             0,
             160,
-            260
+            280
           ]
         },
         "outputNode": {
@@ -487,7 +499,7 @@
             "name": "width",
             "type": "INT",
             "linkIds": [
-              71
+              73
             ],
             "localized_name": "width",
             "label": "Width",
@@ -501,7 +513,7 @@
             "name": "height",
             "type": "INT",
             "linkIds": [
-              72
+              74
             ],
             "localized_name": "height",
             "label": "Height",
@@ -511,17 +523,31 @@
             ]
           },
           {
+            "id": "e1c77f57-7a2c-579d-9cbe-782b6230d954",
+            "name": "exact_frame",
+            "type": "BOOLEAN",
+            "linkIds": [
+              75
+            ],
+            "localized_name": "exact_frame",
+            "label": "Exact Frame",
+            "pos": [
+              0,
+              40
+            ]
+          },
+          {
             "id": "a9e086e5-bb81-52ab-b807-46c3f8531fc7",
             "name": "frames_8n_1",
             "type": "INT",
             "linkIds": [
-              73
+              76
             ],
             "localized_name": "frames_8n_1",
             "label": "Frames (8n + 1)",
             "pos": [
               0,
-              40
+              60
             ]
           },
           {
@@ -529,13 +555,13 @@
             "name": "fps",
             "type": "INT",
             "linkIds": [
-              74
+              77
             ],
             "localized_name": "fps",
             "label": "FPS",
             "pos": [
               0,
-              60
+              80
             ]
           },
           {
@@ -543,13 +569,13 @@
             "name": "negative_prompt",
             "type": "STRING",
             "linkIds": [
-              75
+              78
             ],
             "localized_name": "negative_prompt",
             "label": "Negative prompt",
             "pos": [
               0,
-              80
+              100
             ]
           },
           {
@@ -557,13 +583,13 @@
             "name": "cfg",
             "type": "FLOAT",
             "linkIds": [
-              76
+              79
             ],
             "localized_name": "cfg",
             "label": "CFG",
             "pos": [
               0,
-              100
+              120
             ]
           },
           {
@@ -571,13 +597,13 @@
             "name": "seed",
             "type": "INT",
             "linkIds": [
-              77
+              80
             ],
             "localized_name": "seed",
             "label": "Seed",
             "pos": [
               0,
-              120
+              140
             ]
           },
           {
@@ -585,13 +611,13 @@
             "name": "transition_lora_strength",
             "type": "FLOAT",
             "linkIds": [
-              79
+              82
             ],
             "localized_name": "transition_lora_strength",
             "label": "Transition LoRA strength",
             "pos": [
               0,
-              140
+              160
             ]
           },
           {
@@ -606,7 +632,7 @@
             "label": "LoadImage",
             "pos": [
               0,
-              160
+              180
             ]
           },
           {
@@ -620,7 +646,7 @@
             "label": "LoadImage",
             "pos": [
               0,
-              180
+              200
             ]
           },
           {
@@ -634,7 +660,7 @@
             "label": "Prompt \u2014 describe the result",
             "pos": [
               0,
-              200
+              220
             ]
           }
         ],
@@ -1621,14 +1647,14 @@
               "scale dimensions",
               512,
               512,
-              "disabled",
+              "center",
               "nearest-exact"
             ],
             "widgets_values_named": {
               "resize_type": "scale dimensions",
               "resize_type.width": 512,
               "resize_type.height": 512,
-              "resize_type.crop": "disabled",
+              "resize_type.crop": "center",
               "scale_method": "nearest-exact"
             }
           },
@@ -2273,7 +2299,7 @@
                 "name": "MODEL",
                 "type": "MODEL",
                 "links": [
-                  70
+                  72
                 ]
               }
             ],
@@ -2394,7 +2420,7 @@
                 "type": "INT",
                 "links": [
                   64,
-                  68
+                  69
                 ]
               },
               {
@@ -2402,7 +2428,7 @@
                 "type": "INT",
                 "links": [
                   65,
-                  69
+                  70
                 ]
               },
               {
@@ -2459,6 +2485,11 @@
                 "name": "values.d",
                 "type": "FLOAT,INT,BOOLEAN",
                 "link": 65
+              },
+              {
+                "name": "values.e",
+                "type": "FLOAT,INT,BOOLEAN",
+                "link": 66
               }
             ],
             "outputs": [
@@ -2486,10 +2517,10 @@
               "Node name for S&R": "ComfyMathExpression"
             },
             "widgets_values": [
-              "max(64,round(sqrt(a*b*c/d)/32)*32)"
+              "a if e else max(64,round(sqrt(a*b*c/d)/32)*32)"
             ],
             "widgets_values_named": {
-              "expression": "max(64,round(sqrt(a*b*c/d)/32)*32)"
+              "expression": "a if e else max(64,round(sqrt(a*b*c/d)/32)*32)"
             }
           },
           {
@@ -2518,22 +2549,27 @@
               {
                 "name": "values.a",
                 "type": "FLOAT,INT,BOOLEAN",
-                "link": 66
+                "link": 67
               },
               {
                 "name": "values.b",
                 "type": "FLOAT,INT,BOOLEAN",
-                "link": 67
+                "link": 68
               },
               {
                 "name": "values.c",
                 "type": "FLOAT,INT,BOOLEAN",
-                "link": 68
+                "link": 69
               },
               {
                 "name": "values.d",
                 "type": "FLOAT,INT,BOOLEAN",
-                "link": 69
+                "link": 70
+              },
+              {
+                "name": "values.e",
+                "type": "FLOAT,INT,BOOLEAN",
+                "link": 71
               }
             ],
             "outputs": [
@@ -2561,10 +2597,10 @@
               "Node name for S&R": "ComfyMathExpression"
             },
             "widgets_values": [
-              "max(64,round(sqrt(a*b*d/c)/32)*32)"
+              "b if e else max(64,round(sqrt(a*b*d/c)/32)*32)"
             ],
             "widgets_values_named": {
-              "expression": "max(64,round(sqrt(a*b*d/c)/32)*32)"
+              "expression": "b if e else max(64,round(sqrt(a*b*d/c)/32)*32)"
             }
           },
           {
@@ -2585,7 +2621,7 @@
               {
                 "name": "model",
                 "type": "MODEL",
-                "link": 70
+                "link": 72
               },
               {
                 "name": "lora_name",
@@ -2598,7 +2634,7 @@
               {
                 "name": "strength_model",
                 "type": "FLOAT",
-                "link": 78,
+                "link": 81,
                 "widget": {
                   "name": "strength_model"
                 }
@@ -2626,105 +2662,11 @@
             }
           },
           {
-            "id": 9101,
-            "type": "PrimitiveInt",
-            "pos": [
-              -380,
-              200
-            ],
-            "size": [
-              300,
-              60
-            ],
-            "flags": {},
-            "order": 0,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "value",
-                "name": "value",
-                "type": "INT",
-                "widget": {
-                  "name": "value"
-                },
-                "link": 71
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "INT",
-                "name": "INT",
-                "type": "INT",
-                "links": [
-                  62,
-                  66
-                ]
-              }
-            ],
-            "title": "Width",
-            "properties": {
-              "Node name for S&R": "PrimitiveInt"
-            },
-            "widgets_values": [
-              960
-            ],
-            "widgets_values_named": {
-              "value": 960
-            }
-          },
-          {
             "id": 9102,
             "type": "PrimitiveInt",
             "pos": [
               -380,
-              300
-            ],
-            "size": [
-              300,
-              60
-            ],
-            "flags": {},
-            "order": 0,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "value",
-                "name": "value",
-                "type": "INT",
-                "widget": {
-                  "name": "value"
-                },
-                "link": 72
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "INT",
-                "name": "INT",
-                "type": "INT",
-                "links": [
-                  63,
-                  67
-                ]
-              }
-            ],
-            "title": "Height",
-            "properties": {
-              "Node name for S&R": "PrimitiveInt"
-            },
-            "widgets_values": [
-              544
-            ],
-            "widgets_values_named": {
-              "value": 544
-            }
-          },
-          {
-            "id": 9103,
-            "type": "PrimitiveInt",
-            "pos": [
-              -380,
-              400
+              200
             ],
             "size": [
               300,
@@ -2750,24 +2692,118 @@
                 "name": "INT",
                 "type": "INT",
                 "links": [
-                  3,
-                  12
+                  62,
+                  67
                 ]
               }
             ],
-            "title": "Frames (8n + 1)",
+            "title": "Width",
             "properties": {
               "Node name for S&R": "PrimitiveInt"
             },
             "widgets_values": [
-              241
+              960
             ],
             "widgets_values_named": {
-              "value": 241
+              "value": 960
+            }
+          },
+          {
+            "id": 9103,
+            "type": "PrimitiveInt",
+            "pos": [
+              -380,
+              300
+            ],
+            "size": [
+              300,
+              60
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "value",
+                "name": "value",
+                "type": "INT",
+                "widget": {
+                  "name": "value"
+                },
+                "link": 74
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "INT",
+                "name": "INT",
+                "type": "INT",
+                "links": [
+                  63,
+                  68
+                ]
+              }
+            ],
+            "title": "Height",
+            "properties": {
+              "Node name for S&R": "PrimitiveInt"
+            },
+            "widgets_values": [
+              544
+            ],
+            "widgets_values_named": {
+              "value": 544
             }
           },
           {
             "id": 9104,
+            "type": "PrimitiveBoolean",
+            "pos": [
+              -380,
+              400
+            ],
+            "size": [
+              300,
+              60
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "value",
+                "name": "value",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "value"
+                },
+                "link": 75
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "BOOLEAN",
+                "name": "BOOLEAN",
+                "type": "BOOLEAN",
+                "links": [
+                  66,
+                  71
+                ]
+              }
+            ],
+            "title": "Exact Frame",
+            "properties": {
+              "Node name for S&R": "PrimitiveBoolean"
+            },
+            "widgets_values": [
+              false
+            ],
+            "widgets_values_named": {
+              "value": false
+            }
+          },
+          {
+            "id": 9105,
             "type": "PrimitiveInt",
             "pos": [
               -380,
@@ -2788,7 +2824,54 @@
                 "widget": {
                   "name": "value"
                 },
-                "link": 74
+                "link": 76
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "INT",
+                "name": "INT",
+                "type": "INT",
+                "links": [
+                  3,
+                  12
+                ]
+              }
+            ],
+            "title": "Frames (8n + 1)",
+            "properties": {
+              "Node name for S&R": "PrimitiveInt"
+            },
+            "widgets_values": [
+              241
+            ],
+            "widgets_values_named": {
+              "value": 241
+            }
+          },
+          {
+            "id": 9106,
+            "type": "PrimitiveInt",
+            "pos": [
+              -380,
+              600
+            ],
+            "size": [
+              300,
+              60
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "value",
+                "name": "value",
+                "type": "INT",
+                "widget": {
+                  "name": "value"
+                },
+                "link": 77
               }
             ],
             "outputs": [
@@ -2815,11 +2898,11 @@
             }
           },
           {
-            "id": 9105,
+            "id": 9107,
             "type": "PrimitiveStringMultiline",
             "pos": [
               -380,
-              600
+              700
             ],
             "size": [
               300,
@@ -2836,7 +2919,7 @@
                 "widget": {
                   "name": "value"
                 },
-                "link": 75
+                "link": 78
               }
             ],
             "outputs": [
@@ -2861,103 +2944,11 @@
             }
           },
           {
-            "id": 9106,
-            "type": "PrimitiveFloat",
-            "pos": [
-              -380,
-              700
-            ],
-            "size": [
-              300,
-              60
-            ],
-            "flags": {},
-            "order": 0,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "value",
-                "name": "value",
-                "type": "FLOAT",
-                "widget": {
-                  "name": "value"
-                },
-                "link": 76
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "FLOAT",
-                "name": "FLOAT",
-                "type": "FLOAT",
-                "links": [
-                  30
-                ]
-              }
-            ],
-            "title": "CFG",
-            "properties": {
-              "Node name for S&R": "PrimitiveFloat"
-            },
-            "widgets_values": [
-              1.0
-            ],
-            "widgets_values_named": {
-              "value": 1.0
-            }
-          },
-          {
-            "id": 9107,
-            "type": "PrimitiveInt",
-            "pos": [
-              -380,
-              800
-            ],
-            "size": [
-              300,
-              60
-            ],
-            "flags": {},
-            "order": 0,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "value",
-                "name": "value",
-                "type": "INT",
-                "widget": {
-                  "name": "value"
-                },
-                "link": 77
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "INT",
-                "name": "INT",
-                "type": "INT",
-                "links": [
-                  2
-                ]
-              }
-            ],
-            "title": "Seed",
-            "properties": {
-              "Node name for S&R": "PrimitiveInt"
-            },
-            "widgets_values": [
-              42
-            ],
-            "widgets_values_named": {
-              "value": 42
-            }
-          },
-          {
             "id": 9108,
             "type": "PrimitiveFloat",
             "pos": [
               -380,
-              900
+              800
             ],
             "size": [
               300,
@@ -2983,7 +2974,99 @@
                 "name": "FLOAT",
                 "type": "FLOAT",
                 "links": [
-                  78
+                  30
+                ]
+              }
+            ],
+            "title": "CFG",
+            "properties": {
+              "Node name for S&R": "PrimitiveFloat"
+            },
+            "widgets_values": [
+              1.0
+            ],
+            "widgets_values_named": {
+              "value": 1.0
+            }
+          },
+          {
+            "id": 9109,
+            "type": "PrimitiveInt",
+            "pos": [
+              -380,
+              900
+            ],
+            "size": [
+              300,
+              60
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "value",
+                "name": "value",
+                "type": "INT",
+                "widget": {
+                  "name": "value"
+                },
+                "link": 80
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "INT",
+                "name": "INT",
+                "type": "INT",
+                "links": [
+                  2
+                ]
+              }
+            ],
+            "title": "Seed",
+            "properties": {
+              "Node name for S&R": "PrimitiveInt"
+            },
+            "widgets_values": [
+              42
+            ],
+            "widgets_values_named": {
+              "value": 42
+            }
+          },
+          {
+            "id": 9110,
+            "type": "PrimitiveFloat",
+            "pos": [
+              -380,
+              1000
+            ],
+            "size": [
+              300,
+              60
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "value",
+                "name": "value",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "value"
+                },
+                "link": 82
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "FLOAT",
+                "name": "FLOAT",
+                "type": "FLOAT",
+                "links": [
+                  81
                 ]
               }
             ],
@@ -3402,7 +3485,7 @@
             "type": "INT"
           },
           {
-            "id": 68,
+            "id": 69,
             "origin_id": 9013,
             "origin_slot": 0,
             "target_id": 9015,
@@ -3410,7 +3493,7 @@
             "type": "INT"
           },
           {
-            "id": 69,
+            "id": 70,
             "origin_id": 9013,
             "origin_slot": 1,
             "target_id": 9015,
@@ -3418,7 +3501,7 @@
             "type": "INT"
           },
           {
-            "id": 70,
+            "id": 72,
             "origin_id": 9011,
             "origin_slot": 0,
             "target_id": 9100,
@@ -3427,26 +3510,10 @@
           },
           {
             "id": 62,
-            "origin_id": 9101,
-            "origin_slot": 0,
-            "target_id": 9014,
-            "target_slot": 1,
-            "type": "INT"
-          },
-          {
-            "id": 66,
-            "origin_id": 9101,
-            "origin_slot": 0,
-            "target_id": 9015,
-            "target_slot": 1,
-            "type": "INT"
-          },
-          {
-            "id": 63,
             "origin_id": 9102,
             "origin_slot": 0,
             "target_id": 9014,
-            "target_slot": 2,
+            "target_slot": 1,
             "type": "INT"
           },
           {
@@ -3454,12 +3521,44 @@
             "origin_id": 9102,
             "origin_slot": 0,
             "target_id": 9015,
+            "target_slot": 1,
+            "type": "INT"
+          },
+          {
+            "id": 63,
+            "origin_id": 9103,
+            "origin_slot": 0,
+            "target_id": 9014,
             "target_slot": 2,
             "type": "INT"
           },
           {
-            "id": 3,
+            "id": 68,
             "origin_id": 9103,
+            "origin_slot": 0,
+            "target_id": 9015,
+            "target_slot": 2,
+            "type": "INT"
+          },
+          {
+            "id": 66,
+            "origin_id": 9104,
+            "origin_slot": 0,
+            "target_id": 9014,
+            "target_slot": 5,
+            "type": "BOOLEAN"
+          },
+          {
+            "id": 71,
+            "origin_id": 9104,
+            "origin_slot": 0,
+            "target_id": 9015,
+            "target_slot": 5,
+            "type": "BOOLEAN"
+          },
+          {
+            "id": 3,
+            "origin_id": 9105,
             "origin_slot": 0,
             "target_id": 103,
             "target_slot": 0,
@@ -3467,7 +3566,7 @@
           },
           {
             "id": 12,
-            "origin_id": 9103,
+            "origin_id": 9105,
             "origin_slot": 0,
             "target_id": 106,
             "target_slot": 2,
@@ -3475,7 +3574,7 @@
           },
           {
             "id": 4,
-            "origin_id": 9104,
+            "origin_id": 9106,
             "origin_slot": 0,
             "target_id": 103,
             "target_slot": 1,
@@ -3483,7 +3582,7 @@
           },
           {
             "id": 15,
-            "origin_id": 9104,
+            "origin_id": 9106,
             "origin_slot": 0,
             "target_id": 107,
             "target_slot": 2,
@@ -3491,7 +3590,7 @@
           },
           {
             "id": 47,
-            "origin_id": 9104,
+            "origin_id": 9106,
             "origin_slot": 0,
             "target_id": 120,
             "target_slot": 1,
@@ -3499,7 +3598,7 @@
           },
           {
             "id": 44,
-            "origin_id": 9105,
+            "origin_id": 9107,
             "origin_slot": 0,
             "target_id": 119,
             "target_slot": 0,
@@ -3507,7 +3606,7 @@
           },
           {
             "id": 30,
-            "origin_id": 9106,
+            "origin_id": 9108,
             "origin_slot": 0,
             "target_id": 111,
             "target_slot": 3,
@@ -3515,88 +3614,96 @@
           },
           {
             "id": 2,
-            "origin_id": 9107,
+            "origin_id": 9109,
             "origin_slot": 0,
             "target_id": 102,
             "target_slot": 0,
             "type": "INT"
           },
           {
-            "id": 78,
-            "origin_id": 9108,
+            "id": 81,
+            "origin_id": 9110,
             "origin_slot": 0,
             "target_id": 9100,
             "target_slot": 2,
             "type": "FLOAT"
           },
           {
-            "id": 71,
-            "origin_id": -10,
-            "origin_slot": 0,
-            "target_id": 9101,
-            "target_slot": 0,
-            "type": "INT"
-          },
-          {
-            "id": 72,
-            "origin_id": -10,
-            "origin_slot": 1,
-            "target_id": 9102,
-            "target_slot": 0,
-            "type": "INT"
-          },
-          {
             "id": 73,
             "origin_id": -10,
-            "origin_slot": 2,
-            "target_id": 9103,
+            "origin_slot": 0,
+            "target_id": 9102,
             "target_slot": 0,
             "type": "INT"
           },
           {
             "id": 74,
             "origin_id": -10,
-            "origin_slot": 3,
-            "target_id": 9104,
+            "origin_slot": 1,
+            "target_id": 9103,
             "target_slot": 0,
             "type": "INT"
           },
           {
             "id": 75,
             "origin_id": -10,
-            "origin_slot": 4,
-            "target_id": 9105,
+            "origin_slot": 2,
+            "target_id": 9104,
             "target_slot": 0,
-            "type": "STRING"
+            "type": "BOOLEAN"
           },
           {
             "id": 76,
             "origin_id": -10,
-            "origin_slot": 5,
-            "target_id": 9106,
-            "target_slot": 0,
-            "type": "FLOAT"
-          },
-          {
-            "id": 77,
-            "origin_id": -10,
-            "origin_slot": 6,
-            "target_id": 9107,
+            "origin_slot": 3,
+            "target_id": 9105,
             "target_slot": 0,
             "type": "INT"
           },
           {
+            "id": 77,
+            "origin_id": -10,
+            "origin_slot": 4,
+            "target_id": 9106,
+            "target_slot": 0,
+            "type": "INT"
+          },
+          {
+            "id": 78,
+            "origin_id": -10,
+            "origin_slot": 5,
+            "target_id": 9107,
+            "target_slot": 0,
+            "type": "STRING"
+          },
+          {
             "id": 79,
             "origin_id": -10,
-            "origin_slot": 7,
+            "origin_slot": 6,
             "target_id": 9108,
+            "target_slot": 0,
+            "type": "FLOAT"
+          },
+          {
+            "id": 80,
+            "origin_id": -10,
+            "origin_slot": 7,
+            "target_id": 9109,
+            "target_slot": 0,
+            "type": "INT"
+          },
+          {
+            "id": 82,
+            "origin_id": -10,
+            "origin_slot": 8,
+            "target_id": 9110,
             "target_slot": 0,
             "type": "FLOAT"
           },
           {
             "id": 38,
             "origin_id": -10,
-            "origin_slot": 8,
+            "origin_slot": 9,
             "target_id": 117,
             "target_slot": 0,
             "type": "IMAGE"
@@ -3604,7 +3711,7 @@
           {
             "id": 61,
             "origin_id": -10,
-            "origin_slot": 8,
+            "origin_slot": 9,
             "target_id": 9013,
             "target_slot": 0,
             "type": "IMAGE"
@@ -3612,7 +3719,7 @@
           {
             "id": 41,
             "origin_id": -10,
-            "origin_slot": 9,
+            "origin_slot": 10,
             "target_id": 118,
             "target_slot": 0,
             "type": "IMAGE"
@@ -3620,7 +3727,7 @@
           {
             "id": 54,
             "origin_id": -10,
-            "origin_slot": 10,
+            "origin_slot": 11,
             "target_id": 124,
             "target_slot": 0,
             "type": "STRING"
