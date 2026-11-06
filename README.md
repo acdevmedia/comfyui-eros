@@ -47,6 +47,16 @@ Total downloads are approximately **61.7 GB for BF16**, or **45.8 GB for FP8**. 
 
 Changing precision does not overwrite saved workflows. The installer names fresh workflows by version and precision; open the newly installed files after changing `EROS_MODEL_VARIANT`. Old checkpoint files stay on disk until you remove them.
 
+## Portrait and landscape images
+
+The picture you start from is always used whole. **Width** and **Height** set the frame's area, and so the render time and memory; the image sets its shape. A typed size that already matches the image is used as it is. A head-to-toe portrait on the default 960 × 544 renders at 576 × 896 with the whole figure in frame, not a slice of it, and a square image at 736 × 736. Nothing is outpainted: the video takes the image's shape rather than generating new sides. In First and Last Frame the first frame sets the shape; a last frame with different proportions is centre-cropped to match.
+
+## Browse and download outputs
+
+**Connect → HTTP 3923 / Copyparty** opens a gallery of everything in `/workspace/runpod-slim/ComfyUI/output`, newest first. Sign in with the values of Runpod Secrets `COPYPARTY_USERNAME` and `COPYPARTY_SECRET`. Select files to download them, or a whole folder as a ZIP. It is read-only: nothing can be uploaded, changed or deleted, and if either secret is missing it stays off without affecting ComfyUI. The log is `/workspace/logs/copyparty.log`.
+
+`zip`, `unzip` and `aws` are on the path in the terminal for moving outputs off the Pod yourself.
+
 ## Runtime and settings
 
 The bundle upgrades ComfyUI to **v0.43.0**, with its release-pinned frontend **1.57.4**, Transformers **5.21.0**, Diffusers **0.42.0**, Hugging Face Hub **2.3.0**, and SageAttention **1.0.6**. KJNodes and ComfyUI-LTXVideo are pinned at their current upstream heads. The official Runpod base **1.4.1** remains the latest upstream release.
@@ -60,6 +70,8 @@ Template environment settings:
 - `EROS_MODEL_VARIANT`: `bf16` by default; `fp8` is optional.
 - `EROS_VERSION`: `1.5`.
 - `HF_TOKEN`: `{{ RUNPOD_SECRET_HUGGINGFACE_TOKEN }}`.
+- `COPYPARTY_USERNAME`: `{{ RUNPOD_SECRET_COPYPARTY_USERNAME }}`; login for the file browser on port 3923.
+- `COPYPARTY_PASSWORD`: `{{ RUNPOD_SECRET_COPYPARTY_SECRET }}`; its password. The browser stays off without both.
 - `HF_HOME`: `/workspace/.cache/huggingface`.
 - `COMFYUI_ATTENTION`: `sage` by default, or `pytorch` for a fresh launch configuration.
 - `OMP_NUM_THREADS`: automatically set from the container CPU quota unless explicitly supplied.

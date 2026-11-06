@@ -27,11 +27,15 @@ RUN curl -fsSL https://github.com/Comfy-Org/ComfyUI/archive/426f5eea52a7ece1dd59
     python3 -m pip check && \
     printf 'COMFYUI_VERSION=v0.43.0\nEROS_VERSION=1.5\n' > /opt/comfyui-baked/.runpod-bundle-version && \
     python3 -m pip freeze > /opt/eros-python-lock.txt
+RUN apt-get update && apt-get install -y --no-install-recommends zip unzip && rm -rf /var/lib/apt/lists/* && \
+    python3 -m pip install --no-cache-dir 'copyparty==1.20.26' && python3 -m pip freeze > /opt/eros-python-lock.txt && \
+    python3 -m venv /opt/awscli && /opt/awscli/bin/pip install --no-cache-dir 'awscli==1.46.3' && ln -s /opt/awscli/bin/aws /usr/local/bin/aws
 COPY scripts /opt/eros/scripts
 COPY versions /opt/eros/versions
 ARG VCS_REF=development
 RUN printf "EROS_BUNDLE=%s\n" "$VCS_REF" >> /opt/comfyui-baked/.runpod-bundle-version && \
     sed -i 's/BAKED_NODES=(/BAKED_NODES=("ComfyUI-LTXVideo" /' /start.sh && \
-    chmod +x /opt/eros/scripts/*.sh && /opt/eros/scripts/validate.sh build && python3 /opt/eros/scripts/check-build-server.py
-EXPOSE 8188
+    chmod +x /opt/eros/scripts/*.sh && /opt/eros/scripts/validate.sh build && python3 /opt/eros/scripts/check-build-server.py && \
+    bash /opt/eros/scripts/test-copyparty.sh
+EXPOSE 8188 3923
 ENTRYPOINT ["/opt/eros/scripts/entrypoint.sh"]

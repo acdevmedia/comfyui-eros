@@ -3,6 +3,7 @@
 import copy
 import json
 from pathlib import Path
+from workflow_frame import fit_frame
 from workflow_panels import fold_into_panel
 from workflow_style import style_workflow
 ROOT=Path(__file__).resolve().parents[1];P=ROOT/'versions/1.5'
@@ -70,6 +71,8 @@ def to_ui(api,title):
     return d
 
 def package(path):
+    api=fit_frame(json.loads(path.read_text()))
+    path.write_text(json.dumps(api,indent=2)+'\n')
     catalog=json.loads((P/'workflow-catalog.json').read_text()) if (P/'workflow-catalog.json').exists() else {}
     if path.name in catalog:return package_extra(path,catalog[path.name])
     api=json.loads(path.read_text());title=('Image to Video' if 'I2V' in path.name else 'Text to Video')+' — '+('Distilled' if 'DISTILLED' in path.name else 'Base')
