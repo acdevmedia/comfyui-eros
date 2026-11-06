@@ -79,3 +79,7 @@ The CUDA 12.8 image has passed Actions build checks and A100 GPU generation test
 ## Runpod environment reference
 
 See the [complete template environment reference](docs/runpod-environment.md) for every variable, its default, secret mapping, and Hub-specific differences. Defaults are synchronized from account template `qwyiuof0yk`.
+
+## CPU thread sizing
+
+CPU thread pools are sized automatically to the container CPU quota and available CPUs before PyTorch starts, avoiding host-sized pools that can throttle image scaling and export. Set `OMP_NUM_THREADS` and optionally `MKL_NUM_THREADS` to override; startup logs show the selected values. Actual speedup depends on the workload and has not been benchmarked for this revision.

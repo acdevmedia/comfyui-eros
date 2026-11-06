@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Small structural checks run locally and in Actions without model downloads."""
-import json
+import json,subprocess
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 files=list((ROOT/'versions/1.5/workflows').glob('*.json'))
@@ -48,3 +48,6 @@ constraints=(ROOT/'versions/1.5/runtime-constraints.txt').read_text()
 assert 'torch=='+p['torch_version'] in constraints
 assert 'comfyui-frontend-package=='+p['frontend_version'] in constraints
 print(f'PASS: {len(files)} workflow graphs; valid links, pinned assets, default model budget <100 GB.')
+
+# Exercise quota-aware thread sizing without importing torch or requiring a GPU.
+subprocess.run(["bash",str(ROOT/"scripts/test-cpu-threads.sh")],check=True)
