@@ -2,7 +2,7 @@
 FROM runpod/comfyui:1.4.1-comfyuiv0.35.0-cuda12.8@sha256:d411ebacf3fdbc98ded7f78f06ac12aae20c08041cde79ab08173c156d04aae5
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 ENV EROS_VERSION=1.5 EROS_MODEL_VARIANT=bf16 \
-    HF_HOME=/workspace/.cache/huggingface HF_HUB_DISABLE_TELEMETRY=1 \
+    HF_HOME=/workspace/.cache/huggingface HF_HUB_DISABLE_TELEMETRY=1 HF_XET_HIGH_PERFORMANCE=1 \
     COMFYUI_ATTENTION=sage PYTHONUNBUFFERED=1
 # Upgrade the matched torch/vision/audio family together. The CUDA wheel supplies
 # its userspace runtime; the host must provide a CUDA 12.8-compatible NVIDIA driver.

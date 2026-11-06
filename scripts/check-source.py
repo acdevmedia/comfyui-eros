@@ -35,7 +35,7 @@ assert all(len(x['sha256'])==64 and len(x['revision'])==40 for x in p['models'])
 for path in (ROOT/'versions/1.5/api').glob('*.json'):
     api=json.loads(path.read_text())
     for node in api.values():
-        if node['class_type']=='LoraLoaderModelOnly':
+        if node['class_type']=='LoraLoaderModelOnly' and node['inputs']['lora_name']!='ltx2.3-transition.safetensors':
             assert node['inputs']['lora_name']=='LTX2.3_DMD_hybrid_v2.safetensors'
             assert node['inputs']['strength_model']==1.0
         if node['class_type']=='KSamplerSelect':

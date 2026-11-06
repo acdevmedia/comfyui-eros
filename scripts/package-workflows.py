@@ -3,7 +3,7 @@
 import copy
 import json
 from pathlib import Path
-from workflow_frame import fit_frame
+from workflow_frame import add_transition_lora, fit_frame
 from workflow_panels import fold_into_panel
 from workflow_style import style_workflow
 ROOT=Path(__file__).resolve().parents[1];P=ROOT/'versions/1.5'
@@ -72,6 +72,7 @@ def to_ui(api,title):
 
 def package(path):
     api=fit_frame(json.loads(path.read_text()))
+    if 'flf2v' in path.name:add_transition_lora(api)
     path.write_text(json.dumps(api,indent=2)+'\n')
     catalog=json.loads((P/'workflow-catalog.json').read_text()) if (P/'workflow-catalog.json').exists() else {}
     if path.name in catalog:return package_extra(path,catalog[path.name])
