@@ -152,7 +152,7 @@
         {
           "name": "video",
           "type": "VIDEO",
-          "links": []
+          "links": null
         }
       ],
       "properties": {
@@ -298,7 +298,10 @@
       "title": "02 \u00b7 Shot settings",
       "properties": {
         "cnr_id": "comfy-core",
-        "ver": "0.39.0"
+        "ver": "0.39.0",
+        "acdevSeedModes": {
+          "seed": "randomize"
+        }
       },
       "widgets_values": [
         960,
@@ -322,54 +325,6 @@
       },
       "color": "#484661",
       "bgcolor": "#29283d"
-    },
-    {
-      "id": 9111,
-      "type": "MarkdownNote",
-      "pos": [
-        0,
-        -60
-      ],
-      "size": [
-        1700,
-        100
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "title": "10Eros 1.5 \u00b7 New Camera Angle",
-      "properties": {},
-      "widgets_values": [
-        "**Make a shot.** Follow the guide on the left, add your inputs, adjust Shot settings, then click **Run**."
-      ],
-      "color": "#23413c",
-      "bgcolor": "#142723"
-    },
-    {
-      "id": 9112,
-      "type": "MarkdownNote",
-      "pos": [
-        -540,
-        100
-      ],
-      "size": [
-        500,
-        760
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "title": "How to use this workflow",
-      "properties": {},
-      "widgets_values": [
-        "## How to move the camera\n\nThis re-shoots your clip from a new position, like a second camera on the same take, and keeps your clip's sound so it lines up in the edit.\n\n1. Upload **Your source video**. No opening image is needed.\n2. Write only the camera move, in these exact words:\n\n`crossview. new camera angle: to the left, higher, closer.`\n\n- **Side:** same angle \u00b7 slightly to the left \u00b7 slightly to the right \u00b7 to the left \u00b7 to the right \u00b7 far to the left \u00b7 far to the right\n- **Height:** lower \u00b7 same height \u00b7 higher\n- **Distance:** closer \u00b7 same distance \u00b7 further\n\n3. Run. For a big move, feed the result back in and make another small one.\n\nSmall moves are the most reliable. The range is about 60\u00b0 either side of the front, so a view from behind is out of reach. **IC-LoRA strength** starts at 1.5 because the effect is weaker on fast sampling; 1.2 to 1.5 is the useful range. This is a v0.9 proof of concept, and it was trained on the plain LTX-2.3 model.\n\n**Width** and **Height** set the frame's area, and your clip sets its shape. **Frames** sets the length, and the shot stops at the end of your clip."
-      ],
-      "color": "#222",
-      "bgcolor": "#000"
     }
   ],
   "links": [
@@ -643,12 +598,12 @@
               {
                 "name": "bit_depth",
                 "type": "COMBO",
-                "links": []
+                "links": null
               },
               {
                 "name": "color_space",
                 "type": "COMBO",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -762,7 +717,7 @@
               {
                 "name": "FLOAT",
                 "type": "FLOAT",
-                "links": []
+                "links": null
               },
               {
                 "name": "INT",
@@ -776,7 +731,7 @@
               {
                 "name": "BOOL",
                 "type": "BOOLEAN",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -842,7 +797,7 @@
               {
                 "name": "FLOAT",
                 "type": "FLOAT",
-                "links": []
+                "links": null
               },
               {
                 "name": "INT",
@@ -856,7 +811,7 @@
               {
                 "name": "BOOL",
                 "type": "BOOLEAN",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -922,7 +877,7 @@
               {
                 "name": "BOOL",
                 "type": "BOOLEAN",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -1106,7 +1061,7 @@
               {
                 "name": "CLIP",
                 "type": "CLIP",
-                "links": []
+                "links": null
               },
               {
                 "name": "VAE",
@@ -1559,12 +1514,12 @@
               {
                 "name": "INT",
                 "type": "INT",
-                "links": []
+                "links": null
               },
               {
                 "name": "BOOL",
                 "type": "BOOLEAN",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -2415,7 +2370,7 @@
               {
                 "name": "denoised_output",
                 "type": "LATENT",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -2456,7 +2411,7 @@
               {
                 "name": "audio_latent",
                 "type": "LATENT",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -2500,12 +2455,12 @@
               {
                 "name": "positive",
                 "type": "CONDITIONING",
-                "links": []
+                "links": null
               },
               {
                 "name": "negative",
                 "type": "CONDITIONING",
-                "links": []
+                "links": null
               },
               {
                 "name": "latent",

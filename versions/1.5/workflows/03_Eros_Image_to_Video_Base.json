@@ -60,7 +60,7 @@
         {
           "name": "video",
           "type": "VIDEO",
-          "links": []
+          "links": null
         }
       ],
       "properties": {
@@ -163,7 +163,7 @@
         {
           "name": "MASK",
           "type": "MASK",
-          "links": []
+          "links": null
         }
       ],
       "properties": {
@@ -333,7 +333,11 @@
       "title": "02 \u00b7 Shot settings",
       "properties": {
         "cnr_id": "comfy-core",
-        "ver": "0.39.0"
+        "ver": "0.39.0",
+        "acdevSeedModes": {
+          "seed": "randomize",
+          "refinement_seed": "randomize"
+        }
       },
       "widgets_values": [
         960,
@@ -363,30 +367,6 @@
       },
       "color": "#484661",
       "bgcolor": "#29283d"
-    },
-    {
-      "id": 9114,
-      "type": "MarkdownNote",
-      "pos": [
-        0,
-        -60
-      ],
-      "size": [
-        1700,
-        100
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "title": "10Eros 1.5 \u00b7 Image to Video \u2014 Base",
-      "properties": {},
-      "widgets_values": [
-        "**Make a shot.** Describe the scene, add your inputs, adjust Shot settings, then click **Run**.\n\nDefault: 960 \u00d7 544 \u00b7 24 fps \u00b7 241 frames (about 10 seconds). With an image, Width and Height set the frame's area and the image sets its shape, so a head-to-toe portrait stays head to toe. Turn on Exact Frame in Shot settings to use your exact Width and Height instead, which centre-crops the image."
-      ],
-      "color": "#23413c",
-      "bgcolor": "#142723"
     }
   ],
   "links": [
@@ -791,7 +771,7 @@
               {
                 "name": "denoised_output",
                 "type": "LATENT",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -849,7 +829,7 @@
               {
                 "name": "latent",
                 "type": "LATENT",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -937,7 +917,7 @@
               {
                 "name": "FLOAT",
                 "type": "FLOAT",
-                "links": []
+                "links": null
               },
               {
                 "name": "INT",
@@ -949,7 +929,7 @@
               {
                 "name": "BOOL",
                 "type": "BOOLEAN",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -995,7 +975,7 @@
               {
                 "name": "FLOAT",
                 "type": "FLOAT",
-                "links": []
+                "links": null
               },
               {
                 "name": "INT",
@@ -1007,7 +987,7 @@
               {
                 "name": "BOOL",
                 "type": "BOOLEAN",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -1182,7 +1162,7 @@
               {
                 "name": "BOOL",
                 "type": "BOOLEAN",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -2084,7 +2064,7 @@
               {
                 "name": "CLIP",
                 "type": "CLIP",
-                "links": []
+                "links": null
               },
               {
                 "name": "VAE",
@@ -2247,7 +2227,7 @@
               {
                 "name": "denoised_output",
                 "type": "LATENT",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -2862,7 +2842,7 @@
               {
                 "name": "batch_size",
                 "type": "INT",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -2924,7 +2904,7 @@
               {
                 "name": "FLOAT",
                 "type": "FLOAT",
-                "links": []
+                "links": null
               },
               {
                 "name": "INT",
@@ -2938,7 +2918,7 @@
               {
                 "name": "BOOL",
                 "type": "BOOLEAN",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
@@ -3004,7 +2984,7 @@
               {
                 "name": "FLOAT",
                 "type": "FLOAT",
-                "links": []
+                "links": null
               },
               {
                 "name": "INT",
@@ -3018,7 +2998,7 @@
               {
                 "name": "BOOL",
                 "type": "BOOLEAN",
-                "links": []
+                "links": null
               }
             ],
             "properties": {
