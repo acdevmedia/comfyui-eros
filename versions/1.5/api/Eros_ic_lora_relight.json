@@ -12,9 +12,20 @@
     }
   },
   "9002": {
-    "class_type": "PrimitiveInt",
     "inputs": {
-      "value": 121
+      "expression": "1 + floor(a * b / 8) * 8",
+      "values.a": [
+        "9102",
+        0
+      ],
+      "values.b": [
+        "101",
+        2
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "Frames from duration (8n + 1)"
     }
   },
   "9004": {
@@ -132,7 +143,7 @@
       "expression": "1+floor((min(a,b)-1)/8)*8",
       "values.a": [
         "9002",
-        0
+        1
       ],
       "values.b": [
         "102",
@@ -672,6 +683,15 @@
     "class_type": "PrimitiveBoolean",
     "_meta": {
       "title": "Exact Frame"
+    }
+  },
+  "9102": {
+    "inputs": {
+      "value": 5.0
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "Duration (seconds)"
     }
   }
 }

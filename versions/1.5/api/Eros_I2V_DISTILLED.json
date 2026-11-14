@@ -242,7 +242,7 @@
       ],
       "length": [
         "27",
-        0
+        1
       ],
       "batch_size": 1
     },
@@ -322,11 +322,19 @@
   },
   "27": {
     "inputs": {
-      "value": 241
+      "expression": "1 + floor(a * b / 8) * 8",
+      "values.a": [
+        "9102",
+        0
+      ],
+      "values.b": [
+        "26",
+        0
+      ]
     },
-    "class_type": "PrimitiveInt",
+    "class_type": "ComfyMathExpression",
     "_meta": {
-      "title": "Length"
+      "title": "Frames from duration (8n + 1)"
     }
   },
   "29": {
@@ -394,7 +402,7 @@
     "inputs": {
       "frames_number": [
         "27",
-        0
+        1
       ],
       "frame_rate": [
         "24",
@@ -753,6 +761,15 @@
     "class_type": "PrimitiveBoolean",
     "_meta": {
       "title": "Exact Frame"
+    }
+  },
+  "9102": {
+    "inputs": {
+      "value": 10.0
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "Duration (seconds)"
     }
   }
 }

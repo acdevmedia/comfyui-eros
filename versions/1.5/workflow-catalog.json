@@ -17,8 +17,8 @@
         "source": 9101
       },
       {
-        "label": "Frames (8n + 1)",
-        "source": 9002
+        "label": "Duration (seconds)",
+        "source": 9102
       },
       {
         "label": "FPS",
@@ -67,8 +67,8 @@
         "source": 9101
       },
       {
-        "label": "Frames (8n + 1)",
-        "source": 9002
+        "label": "Duration (seconds)",
+        "source": 9102
       },
       {
         "label": "FPS",
@@ -107,8 +107,8 @@
         "source": 9101
       },
       {
-        "label": "Frames (8n + 1)",
-        "source": 9002
+        "label": "Duration (seconds)",
+        "source": 9102
       },
       {
         "label": "Negative prompt",
@@ -153,8 +153,8 @@
         "source": 9001
       },
       {
-        "label": "Frames (8n + 1)",
-        "source": 9002
+        "label": "Duration (seconds)",
+        "source": 9102
       },
       {
         "label": "FPS",
@@ -207,8 +207,8 @@
         "source": 9101
       },
       {
-        "label": "Frames (8n + 1)",
-        "source": 9002
+        "label": "Duration (seconds)",
+        "source": 9102
       },
       {
         "label": "Negative prompt",
@@ -258,8 +258,8 @@
         "source": 9101
       },
       {
-        "label": "Frames (8n + 1)",
-        "source": 9002
+        "label": "Duration (seconds)",
+        "source": 9102
       },
       {
         "label": "Negative prompt",

@@ -70,3 +70,37 @@ def add_transition_lora(api):
     api[TRANSITION_NODE] = {'inputs': {'model': [tail, 0], 'lora_name': TRANSITION, 'strength_model': 0.0},
                             'class_type': 'LoraLoaderModelOnly', '_meta': {'title': 'Scene transition LoRA'}}
     return api
+
+
+DURATION_NODE = '9102'
+FRAMES_FROM_SECONDS = '1 + floor(a * b / 8) * 8'  # identical to the LTX bundle's 8n+1 rule
+
+
+def seconds_not_frames(api):
+    """Replace the typed 8n+1 frame count with Duration (seconds), no upper limit; idempotent.
+
+    The frame count becomes 1 + 8*floor(seconds * fps / 8), using the workflow's FPS control or,
+    for video-to-video, the source clip's frame rate. The default duration reproduces the old
+    frame count at 24 fps (241 frames = 10 s, 121 = 5 s).
+    """
+    if DURATION_NODE in api:
+        return api
+    frames = next((key for key in ('27', '9002') if api.get(key, {}).get('class_type') == 'PrimitiveInt'), None)
+    if frames is None:
+        return api
+    fps_key = next((key for key in ('26', '9003') if api.get(key, {}).get('class_type') == 'PrimitiveInt'), None)
+    if fps_key:
+        fps_link, fps_default = [fps_key, 0], api[fps_key]['inputs']['value']
+    else:
+        fps_link = next(node['inputs']['frame_rate'] for node in api.values()
+                        if node['class_type'] == 'LTXVConditioning' and isinstance(node['inputs'].get('frame_rate'), list))
+        fps_default = 24
+    seconds = round((api[frames]['inputs']['value'] - 1) / fps_default, 3)
+    for node in api.values():
+        for name, value in node['inputs'].items():
+            if value == [frames, 0]:
+                node['inputs'][name] = [frames, 1]  # ComfyMathExpression: output 1 is INT
+    api[DURATION_NODE] = {'inputs': {'value': seconds}, 'class_type': 'PrimitiveFloat', '_meta': {'title': 'Duration (seconds)'}}
+    api[frames] = {'inputs': {'expression': FRAMES_FROM_SECONDS, 'values.a': [DURATION_NODE, 0], 'values.b': fps_link},
+                   'class_type': 'ComfyMathExpression', '_meta': {'title': 'Frames from duration (8n + 1)'}}
+    return api
